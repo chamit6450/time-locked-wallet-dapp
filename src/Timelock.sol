@@ -15,7 +15,7 @@ contract Timelock{
          require(msg.value > 0, "Send vaild ETH");
          require(_unlockTime > block.timestamp, "unlock time cannot be less than current time");
          locked[msg.sender].amount += msg.value;
-         locked[msg.sender].unlockTime += _unlockTime;
+         locked[msg.sender].unlockTime = _unlockTime;
     }
 
     function withdraw() external{
