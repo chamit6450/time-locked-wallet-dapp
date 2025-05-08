@@ -7,6 +7,7 @@ import Timelock from "./Timelock";
 import WalletConnector from './WalletConnector';
 import LockedAssets from './LockedAssets';
 import Link from 'next/link';
+import Withdraw from './Withdraw';
 
 const config = createConfig({
   chains: [mainnet],
@@ -45,6 +46,7 @@ function AppContent() {
           <div className="card ">
             <h2 className="gradient-text text-2xl mb-6">Vault Status</h2>
             <LockedAssets />
+            <Withdraw/>
           </div>
         </div>
       </main>
@@ -61,5 +63,4 @@ export default function Home() {
     </WagmiProvider>
   );
 }
-
 
