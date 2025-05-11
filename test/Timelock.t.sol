@@ -6,10 +6,11 @@ import "../src/Timelock.sol";
 
 contract TimelockTest is Test {
     Timelock public timelock;
-    address public user = address(1);
+    address public user;
 
     function setUp() public {
         timelock = new Timelock();
+        user = makeAddr("user");
         vm.deal(user, 10 ether);
     }
 
@@ -45,8 +46,6 @@ contract TimelockTest is Test {
     }
 
     function test_WithdrawAfterUnlock() public {
-        vm.deal(address(timelock), 1 ether); // Fund contract in case of weird edge cases (optional safety)
-
         vm.prank(user);
         timelock.lock{value: 1 ether}(block.timestamp + 100);
 
